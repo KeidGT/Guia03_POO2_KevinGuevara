@@ -60,11 +60,11 @@ public class LugaAcceServ extends HttpServlet {
                 obj.setFechAlta(objdb.getFechAlta());
                 obj.setFechBaja(new Date());
                 obj.setEsta(0);
-                mens = new LugaAcceCtrl().modificar(obj) ? "Datos modificados" : "Datos no modificados";
+                mens = new LugaAcceCtrl().modificar(obj) ? "Datos eliminados" : "Datos no eliminados";
             }
             else if(CRUD.equals("Consultar"))
             {
-                    Long id = Long.parseLong(request.getParameter("radioButton") == null ?"1" : request.getParameter("radioButton"));
+                    Long id = Long.parseLong(request.getParameter("radioButton") == null ?"0" : request.getParameter("radioButton"));
                     LugaAcce obj = new LugaAcceCtrl().cons(id);
                     if(obj != null)
                     {
@@ -76,7 +76,7 @@ public class LugaAcceServ extends HttpServlet {
             else if(CRUD.equals("Modificar"))
             {
                 LugaAcce obj = new LugaAcce();
-                Long id = Long.parseLong(request.getParameter("txtID") == null ?"1" : request.getParameter("txtID"));
+                Long id = Long.parseLong(request.getParameter("txtID") == null ?"0" : request.getParameter("txtID"));
                 obj.setNombLugaAcce(request.getParameter("txtNombre"));
                 
                 LugaAcce objdb = new LugaAcceCtrl().cons(id);

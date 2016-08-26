@@ -5,7 +5,7 @@
  */
 package com.sv.udb.controlador;
 
-import com.sv.udb.modelo.LugaAcce;
+import com.sv.udb.modelo.TipoGafe;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -18,13 +18,13 @@ import javax.persistence.TypedQuery;
  *
  * @author REGISTRO
  */
-public class LugaAcceCtrl {
+public class TipoGafeCtrl {
     private final String pool; 
 
-    public LugaAcceCtrl() {
+    public TipoGafeCtrl() {
         this.pool = "jpool";
     }
-    public boolean guardar(LugaAcce obj)
+    public boolean guardar(TipoGafe obj)
     {
         boolean resp = false;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(pool);
@@ -51,38 +51,38 @@ public class LugaAcceCtrl {
         return resp;
     }
     
-     public List<LugaAcce>  consTodo()
+     public List<TipoGafe>  consTodo()
     {
-        List<LugaAcce> resp = new ArrayList<>();
+        List<TipoGafe> resp = new ArrayList<>();
           EntityManagerFactory emf = Persistence.createEntityManagerFactory(pool);
-           EntityManager em = emf.createEntityManager();
+          EntityManager em = emf.createEntityManager();
         try
         {
-          TypedQuery<LugaAcce> query =em.createNamedQuery("LugaAcce.findAll", LugaAcce.class);
+          TypedQuery<TipoGafe> query =em.createNamedQuery("TipoGafe.findAll", TipoGafe.class);
            resp = query.getResultList();
         }
         catch(Exception ex)
         {
-            System.out.println(ex.getMessage());
+            System.out.println("ERROR: "+ex.getMessage());
         }
         return resp;
        
     }
-        public boolean modificar(LugaAcce obj)
+        public boolean modificar(TipoGafe obj)
     {
         boolean resp = false;
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(pool);
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();
-         LugaAcce lugar = null;
+         TipoGafe tipo = null;
         tx.begin();
         try
         {
             
-            lugar = em.find(LugaAcce.class, obj.getCodiLugaAcce());
-            lugar.setNombLugaAcce(obj.getNombLugaAcce());
-            lugar.setEsta(obj.getEsta());
-            lugar.setFechAlta(obj.getFechAlta());
+            tipo = em.find(TipoGafe.class, obj.getCodiTipoGafe());
+            tipo.setNombTipoGafe(obj.getNombTipoGafe());
+            tipo.setEsta(obj.getEsta());
+            tipo.setFechAlta(obj.getFechAlta());
             obj.setFechBaja(obj.getFechBaja());
             tx.commit();
             resp = true;
@@ -90,7 +90,7 @@ public class LugaAcceCtrl {
         catch(Exception ex)
         {
             System.out.println("ERROR: " +ex);
-            //tx.rollback();
+            tx.rollback();
             resp = false;
         }
         em.close();
@@ -106,9 +106,9 @@ public class LugaAcceCtrl {
         EntityManager em = emf.createEntityManager();
         EntityTransaction tx = em.getTransaction();       
         tx.begin();
-        LugaAcce respo = null;
+        TipoGafe respo = null;
         try{
-            respo = em.find(LugaAcce.class, empId);
+            respo = em.find(TipoGafe.class, empId);
             if(respo != null)
             {
                 em.remove(respo);
@@ -126,14 +126,14 @@ public class LugaAcceCtrl {
 
      
      
-    public LugaAcce cons(Long empId){
+    public TipoGafe cons(Long empId){
         
         EntityManagerFactory emf = Persistence.createEntityManagerFactory(pool);
         EntityManager em = emf.createEntityManager();
-        LugaAcce resp = null;
+        TipoGafe resp = null;
         
         try{
-            resp = em.find(LugaAcce.class, empId);
+            resp = em.find(TipoGafe.class, empId);
             
         }catch(Exception e){
             e.printStackTrace();

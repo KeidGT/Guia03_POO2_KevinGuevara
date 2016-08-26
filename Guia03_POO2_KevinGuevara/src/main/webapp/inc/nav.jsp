@@ -16,7 +16,7 @@
                     <li><a href="#!"><span class="icon-home"></span></a></li>
                     <li><a href="index.jsp">Lugar Acceso</a></li>
                     <li><a href="tipo_docu.jsp">Tipo Lugar</a></li>
-                    <li><a href="bodega.jsp"><span class="icon-clipboard"> </span>Bodega</a></li>
+                    <li><a href="tipo_gafe.jsp">Tipo Gafete</a></li>
                 </ul>
             </li>
         </ul>
@@ -26,7 +26,7 @@
           <li><a href="#!"><span class="icon-home"></span></a></li>
                     <li><a href="index.jsp">Lugar Acceso</a></li>
                     <li><a href="tipo_docu.jsp">Tipo Lugar</a></li>
-                    <li><a href="tipo_docu.jsp"><span class="icon-clipboard"> </span>Bodega</a></li>
+                    <li><a href="tipo_gafe.jsp">Tipo Gafete</a></li>
         </ul>
         <!--MenuEscritorio-->
     </div>

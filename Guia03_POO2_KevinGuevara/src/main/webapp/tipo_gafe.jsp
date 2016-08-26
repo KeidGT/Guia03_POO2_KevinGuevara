@@ -3,12 +3,11 @@
     Created on : 26-abr-2016, 15:43:28
     Author     : Kevin
 --%>
-
+<%@page import="com.sv.udb.controlador.TipoGafeCtrl"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib uri="http://displaytag.sf.net/el" prefix="display" %>
-<%@page import="com.sv.udb.controlador.LugaAcceCtrl"%>
 <!--%@page import="com.sv.udb.controlador.ProveedorCtrl"%>
 <!--%@page import="com.sv.udb.modelo.Proveedor"%-->
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -22,22 +21,22 @@
 	<link rel="stylesheet" type="text/css" href="css/materialize.min.css">
         <link rel="stylesheet" type="text/css" href="css/icon.css">
         <link rel="stylesheet" href="iconos/style.css">
-        <title>Lugar Acceso</title>
+        <title>Tipo Gafete</title>
     </head>
     <body>
         <jsp:include page="inc/nav.jsp" flush="true"/>
         <div id="contenedor" >
             <div id="manEquipos">
                 <div id="mensajes">
-                <h1 class="center tituloMan">Lugar Acceso</h1>
+                <h1 class="center tituloMan">Tipo Gafete</h1>
             </div>
-            <form id="frm" method="POST" action="LugaAcceServ">
+            <form id="frm" method="POST" action="TipoGafeServ">
                 <div id="formulario">
 
 
-                    <div class="row" style="display:none;">
+                        <div class="row" style="display:none;">
                             <div class="input-field col s12">
-                                <input id="txtID"  placeholder="Código"  type="text" class="validate" name="txtID" value="${txtID}">
+                                <input id="txtID" placeholder="Código"  type="text" class="validate" name="txtID" value="${txtID}">
                             <label for="disabled">Código</label>
                           </div>
                         </div>
@@ -65,7 +64,7 @@
                         </div>
                 </div>
                 <div id="registros">
-                    <jsp:useBean id="frijol" class="com.sv.udb.controlador.LugaAcceCtrl" scope="page"/>
+                    <jsp:useBean id="frijol" class="com.sv.udb.controlador.TipoGafeCtrl" scope="page"/>
                     <div class="row">
                         <div class="input-field col s8">
                             <input  type="text" class="validate" id="txtBuscar" onkeyup="buscarRegistro('txtBuscar','tbData')">
@@ -75,7 +74,6 @@
                             <h2 class="left menMan" id="mensAler">Estado: ${mensAler}</h2>
                         </div>
                     </div>
-                        <jsp:useBean id="LugaAcceCtrl" class="com.sv.udb.controlador.LugaAcceCtrl" scope="page"/>
                         <table class="centered" style="color: #fff; background: #26A69A;">
                             <thead>
                                 <tr>
@@ -86,18 +84,18 @@
                                 </tr>
                             </thead>
                         </table>
-                         
+
                     <div id="tabla">
-                        <% //request.setAttribute( "idDisplay", new LugaAcceCtrl().consTodo() ); %>
-                        <% request.setAttribute( "idDisplay", new LugaAcceCtrl().consTodo() ); %>
-                        <display:table class="bordered highlight centered" id="tbData" name="idDisplay">
-                            <display:column property="nombLugaAcce" title="Nombre" sortable="true"/>
-                            <display:column property="fechAlta" format="{0,date,MM/dd/yyyy}" title="Fecha Alta" sortable="true"/>
-                            <display:column  title="Seleccionar" sortable="true">
-                                <input class="with-gap radioButton" type="radio" id="test${tbData.codiLugaAcce}" value="${tbData.codiLugaAcce}" name="radioButton" />
-                                <label for="test${tbData.codiLugaAcce}"></labe>
-                            </display:column>
-                        </display:table>
+                            <% //request.setAttribute( "idDisplay", new LugaAcceCtrl().consTodo() ); %>
+                            <% request.setAttribute( "idDisplay", new TipoGafeCtrl().consTodo() ); %>
+                            <display:table class="bordered highlight centered" id="tbData" name="idDisplay">
+                                <display:column property="nombTipoGafe" title="Nombre" sortable="true"/>
+                                <display:column property="fechAlta" format="{0,date,MM/dd/yyyy}" title="Fecha Alta" sortable="true"/>
+                                <display:column  title="Seleccionar" sortable="true">
+                                    <input class="with-gap radioButton" type="radio" id="test${tbData.codiTipoGafe}" value="${tbData.codiTipoGafe}" name="radioButton" />
+                                    <label for="test${tbData.codiTipoGafe}"></labe>
+                                </display:column>
+                            </display:table>
                     </div>
                         <input class="btn waves-effect waves-light left" style="margin-top: 14px; display: none;" type="Submit" name="cursBoton" value="Consultar" id="btnConsultar" />
 
@@ -118,7 +116,7 @@
             var txtId = document.getElementById("disabled");
             txtId.removeAttribute("disabled");
             alert("HOLA");
-            document.getElementById("LugaAcceServ").submit();
+            document.getElementById("TipoGafeServ").submit();
         }
         function resetForm(id){
            document.getElementById(id).reset();

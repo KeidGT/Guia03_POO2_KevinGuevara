@@ -34,9 +34,9 @@
                 <div id="formulario">
 
 
-                        <div class="row">
+                        <div class="row" style="display:none;">
                             <div class="input-field col s12">
-                                <input id="txtID" disabled placeholder="Código"  type="text" class="validate" name="txtID" value="${txtID}">
+                                <input id="txtID" placeholder="Código"  type="text" class="validate" name="txtID" value="${txtID}">
                             <label for="disabled">Código</label>
                           </div>
                         </div>

@@ -5,10 +5,8 @@
  */
 package com.sv.udb.vista;
 
-import com.sv.udb.controlador.LugaAcceCtrl;
-import com.sv.udb.controlador.TipoDocuCtrl;
-import com.sv.udb.modelo.LugaAcce;
-import com.sv.udb.modelo.TipoDocu;
+import com.sv.udb.controlador.TipoGafeCtrl;
+import com.sv.udb.modelo.TipoGafe;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
@@ -22,8 +20,8 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author REGISTRO
  */
-@WebServlet(name = "TipoDocuServ", urlPatterns = {"/TipoDocuServ"})
-public class TipoDocuServ extends HttpServlet {
+@WebServlet(name = "TipoGafeServ", urlPatterns = {"/TipoGafeServ"})
+public class TipoGafeServ extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,55 +42,55 @@ public class TipoDocuServ extends HttpServlet {
             String CRUD = request.getParameter("cursBoton");
             if(CRUD.equals("Guardar"))
             {
-                TipoDocu obj = new TipoDocu();
-                obj.setNombTipoDocu(request.getParameter("txtNombre"));
+                TipoGafe obj = new TipoGafe();
+                obj.setNombTipoGafe(request.getParameter("txtNombre"));
                 obj.setFechAlta(new Date());
                 obj.setEsta(1);
-                mens = new TipoDocuCtrl().guardar(obj) ? "Datos guardados" : "Datos NO guardados";
+                mens = new TipoGafeCtrl().guardar(obj) ? "Datos guardados" : "Datos NO guardados";
             }
             else if(CRUD.equals("Eliminar"))
             {
-                TipoDocu obj = new TipoDocu();
+                TipoGafe obj = new TipoGafe();
                 Long id = Long.parseLong(request.getParameter("txtID") == null ?"0" : request.getParameter("txtID"));
                 
-                TipoDocu objdb = new TipoDocuCtrl().cons(id);
-                obj.setCodiTipoDocu(id);
-                obj.setNombTipoDocu(objdb.getNombTipoDocu());
+                TipoGafe objdb = new TipoGafeCtrl().cons(id);
+                obj.setCodiTipoGafe(id);
+                obj.setNombTipoGafe(objdb.getNombTipoGafe());
                 obj.setFechAlta(objdb.getFechAlta());
                 obj.setFechBaja(new Date());
                 obj.setEsta(0);
-                mens = new TipoDocuCtrl().modificar(obj) ? "Datos eliminados" : "Datos no eliminados";
+                mens = new TipoGafeCtrl().modificar(obj) ? "Datos eliminados" : "Datos no eliminados";
             }
             else if(CRUD.equals("Consultar"))
             {
                     Long id = Long.parseLong(request.getParameter("radioButton") == null ?"0" : request.getParameter("radioButton"));
-                    TipoDocu obj = new TipoDocuCtrl().cons(id);
+                    TipoGafe obj = new TipoGafeCtrl().cons(id);
                     if(obj != null)
                     {
-                        request.setAttribute("txtID", obj.getCodiTipoDocu());
-                        request.setAttribute("txtNombre", obj.getNombTipoDocu());
+                        request.setAttribute("txtID", obj.getCodiTipoGafe());
+                        request.setAttribute("txtNombre", obj.getNombTipoGafe());
                         mens = "Datos consultados";
                      }
             }
             else if(CRUD.equals("Modificar"))
             {
-                TipoDocu obj = new TipoDocu();
+                TipoGafe obj = new TipoGafe();
                 Long id = Long.parseLong(request.getParameter("txtID") == null ?"0" : request.getParameter("txtID"));
-                obj.setNombTipoDocu(request.getParameter("txtNombre"));
+                obj.setNombTipoGafe(request.getParameter("txtNombre"));
                 
-                TipoDocu objdb = new TipoDocuCtrl().cons(id);
+                TipoGafe objdb = new TipoGafeCtrl().cons(id);
                 obj.setFechAlta(objdb.getFechAlta());
                 obj.setEsta(1);
-                obj.setCodiTipoDocu(id);
-                mens = new TipoDocuCtrl().modificar(obj) ? "Datos modificados" : "Datos no modificados";
+                obj.setCodiTipoGafe(id);
+                mens = new TipoGafeCtrl().modificar(obj) ? "Datos modificados" : "Datos no modificados";
             }
         }
         else
         {
-            response.sendRedirect(request.getContextPath()+"/tipo_docu.jsp");
+            response.sendRedirect(request.getContextPath()+"/tipo_gafe.jsp");
         }
         request.setAttribute("mensAler", mens);    
-        request.getRequestDispatcher("/tipo_docu.jsp").forward(request, response);
+        request.getRequestDispatcher("/tipo_gafe.jsp").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
