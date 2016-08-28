@@ -1,7 +1,6 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * @author Kevin Guevara Tolentino
+ * @version 0.01 Alpha
  */
 package com.sv.udb.modelo;
 
@@ -22,8 +21,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 /**
- *
- * @author Kevin
+ * Entidad a partir de una base de datos: tipo_docu
  */
 @Entity
 @Table(name = "tipo_docu", catalog = "RegiVisitas", schema = "")
@@ -54,50 +52,96 @@ public class TipoDocu implements Serializable {
     private Date fechBaja;
     @Column(name = "esta")
     private Integer esta;
-
+/**
+ * Constructor, usado para instanciar un objeto
+ */
     public TipoDocu() {
     }
-
+/**
+ * Constructor
+ * @param codiTipoDocu tipo Long
+ * @see TipoDocu(Long )
+ */
     public TipoDocu(Long codiTipoDocu) {
         this.codiTipoDocu = codiTipoDocu;
     }
-
+/**
+ * Método de encapsulamiento
+ * @return codiTipoDocu, de tipo Long
+ * @see getCodiTipoDocu()
+ */
     public Long getCodiTipoDocu() {
         return codiTipoDocu;
     }
-
+/**
+ * Método de encapsulamiento
+ * @param codiTipoDocu Tipo Long
+ * @see setCodiTipoDocu(Long )
+ */
     public void setCodiTipoDocu(Long codiTipoDocu) {
         this.codiTipoDocu = codiTipoDocu;
     }
-
+/**
+ * Método de encapsulamiento
+ * @return nombTipoDocu, de tipo String
+ * @see getNombTipoDocu()
+ */
     public String getNombTipoDocu() {
         return nombTipoDocu;
     }
-
+/**
+ * Método de encapsulamiento
+ * @see setNombTipoDocu(String )
+ * @param nombTipoDocu Tipo String
+ */
     public void setNombTipoDocu(String nombTipoDocu) {
         this.nombTipoDocu = nombTipoDocu;
     }
-
+/**
+ * Método de encapsulamiento
+ * @return fechAlta, de tipo Date 
+ * @see getFechAlta()
+ */
     public Date getFechAlta() {
         return fechAlta;
     }
-
+/**
+ * Método de encapsulamiento
+ * @param fechAlta Tipo Date
+ * @see setFechAlta(Date )
+ */
     public void setFechAlta(Date fechAlta) {
         this.fechAlta = fechAlta;
     }
-
+/**
+ * Método de encapsulamiento
+ * @return fechaBaja, de tipo Date 
+ * @see getFechBaja()
+ */
     public Date getFechBaja() {
         return fechBaja;
     }
-
+/**
+ * Método de encapsulamiento
+ * @param fechBaja Tipo Date
+ * @see setFechBaja(Date )
+ */
     public void setFechBaja(Date fechBaja) {
         this.fechBaja = fechBaja;
     }
-
+/**
+ * Método de encapsulamiento
+ * @return esta, de tipo Integer 
+ * @see getEsta()
+ */
     public Integer getEsta() {
         return esta;
     }
-
+/**
+ * Método de encapsulamiento
+ * @param esta Tipo Integer
+ * @see setEsta(Integer )
+ */
     public void setEsta(Integer esta) {
         this.esta = esta;
     }
